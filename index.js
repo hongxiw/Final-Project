@@ -36,6 +36,7 @@ function showPickScreen() {
 function showGrid() {
     pickDiv.style.display = "none";
     boardDiv.style.display = "block";
+    endDiv.style.display = "block"
 }
 
 // Updates the div from empty to announce who won
