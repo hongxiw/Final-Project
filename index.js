@@ -32,23 +32,14 @@ function showPickScreen() {
     endDiv.style.display = "none";
 }
 
-
 // Shows the grid to play on
 function showGrid() {
     pickDiv.style.display = "none";
     boardDiv.style.display = "block";
 }
 
-
-// Shows the div with the winner message
-function showEndDiv() {
-    pickDiv.style.display = "none";
-    endDiv.style.display = "block";
-}
-
-
 // Updates the div from empty to announce who won
-function showWinnerDiv(winner) {
+function showWinner(winner) {
     pickDiv.style.display = "none";
     document.querySelector("#winMessage").innerHTML = `The ${winner} wins!`
     endDiv.style.display = "block";
@@ -57,7 +48,6 @@ function showWinnerDiv(winner) {
 // A click listener function that determines if the player selected X or O and assigns the turn
 function chooseLetter(event) {
     showGrid();
-    showEndDiv();
     turn = (event.target.id === 'chooseO') ? "computer" : "player";
     playerLetter = (event.target.id === 'chooseO') ? "O" : "X";
     computerLetter = (event.target.id === 'chooseO') ? "X" : "O";
