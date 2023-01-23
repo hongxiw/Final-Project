@@ -2,7 +2,7 @@ body {
     font-size: 24px;
     background-color: bisque;
     display: grid;
-    grid-template: repeat(4, 1fr) / repeat(5, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(5, 1fr);
 }
 
 .center-column {
@@ -29,6 +29,8 @@ li {
 
 table {
     border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td {
@@ -68,9 +70,4 @@ td {
 .fullTaken {
     color: lime;
     background-color: limegreen;
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
 }
