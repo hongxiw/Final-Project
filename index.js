@@ -1,5 +1,9 @@
+// creates empty arrays that will later store half captured and full captured buttons
 const playerHalfCaptured = [], computerHalfCaptured = [], playerFullCaptured = [], computerFullCaptured = [];
 
+// Grabs divs using querySelector that will be used throughout the program
+// Sets default values for some variables
+// Adds click listeners to all buttons in the grid
 function initialize() {
     pickDiv = document.querySelector("#pickDiv");
     boardDiv = document.querySelector("#boardDiv");
@@ -21,28 +25,36 @@ function initialize() {
     document.querySelector("#resetButton").addEventListener("click", resetGame);
 }
 
+// SHow sthe front page and hides the others
 function showPickScreen() {
     pickDiv.style.display = "block";
     boardDiv.style.display = "none";
     endDiv.style.display = "none";
 }
 
+
+// Shows the grid to play on
 function showGrid() {
     pickDiv.style.display = "none";
     boardDiv.style.display = "block";
 }
 
+
+// Shows the div with the winner message
 function showEndDiv() {
     pickDiv.style.display = "none";
     endDiv.style.display = "block";
 }
 
+
+// Updates the div from empty to announce who won
 function showWinnerDiv(winner) {
     pickDiv.style.display = "none";
     document.querySelector("#winMessage").innerHTML = `The ${winner} wins!`
     endDiv.style.display = "block";
 }
 
+// A click listener function that determines if the player selected X or O and assigns the turn
 function chooseLetter(event) {
     showGrid();
     showEndDiv();
@@ -54,6 +66,8 @@ function chooseLetter(event) {
     }
 }
 
+// Called when a player selects a spot on the grid
+// Early return if it's no the player's turn or the player picked an invalid spot
 function playerPickSpot(evt) {
     if (turn !== "player") {
         return;
@@ -81,6 +95,8 @@ function playerPickSpot(evt) {
     computerPickSpot();
 }
 
+// Checks that "who" is allowed to click "button" this turn
+// Button is NOT valid if it was the opponent's most recent selection, or if it is fully captured by either player
 function isValidSpot(button, who) {
     let oppositeRecent = (who === "computer") ? playerRecent : computerRecent;
     let personFull = (who === "computer") ? computerFullCaptured : playerFullCaptured;
@@ -88,6 +104,9 @@ function isValidSpot(button, who) {
     return button != oppositeRecent && !oppositeFull.includes(button) && !personFull.includes(button);
 }
 
+
+// Simulates the computer picking a spot by choosing a random valid button
+// If 9 failed buttons are found, the computer announces that there are not possible moves left
 function computerPickSpot() {
     let randomRow = Math.floor(Math.random() * 3), randomCol = Math.floor(Math.random() * 3);
     let randomButton = grid[randomRow][randomCol];
@@ -122,6 +141,9 @@ function computerPickSpot() {
     turn = "player";
 }
 
+
+// Checks all possible win patterns for the input letter
+// Returns true if a winning position was found for the input and false otherwise
 function isWinFound(char) {
     for (let row = 0; row < 3; row++) {
         if (grid[row][0].innerHTML === char && grid[row][1].innerHTML === char && grid[row][2].innerHTML === char) {
@@ -142,6 +164,8 @@ function isWinFound(char) {
     return false;
 }
 
+
+// Resets the grid and variables
 function resetGame() {
     clearArray(playerHalfCaptured);
     clearArray(playerFullCaptured);
@@ -152,6 +176,8 @@ function resetGame() {
     initialize();
 }
 
+
+// Removes "value" from the specified "array"
 function removeFromArrray(array, value) {
     for (let i in array) {
         if (array[i] === value) {
@@ -161,6 +187,7 @@ function removeFromArrray(array, value) {
     return array.filter(v => v != value);
 }
 
+// Clears the specified "array" of all values
 const clearArray = (array) => {
     while(array.length > 0) {
         array.pop();
