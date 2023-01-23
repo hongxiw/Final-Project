@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hongxi Wen & Simon Yu - Two Layer Tic Tac Toe</title>
+        <style></style>
+        <link rel="stylesheet" href="style.css">
+        <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
+        <script src="index.js"></script>
+    </head>
+    <body onload="initialize();">
+        <div id="pickDiv">
+            <div></div>
+            <div>
+                <h1>Welcome to Two Layer Tic Tac Toe</h2>
+                <hr/>
+                <h2>Rules/Instructions:</h2>
+                <ul>
+                    <li>- You will need to occupy a space twice to fully take it and prevent the opponent from choosing it</li>
+                    <li>- You do not need fully captured spots to win. Three in a row with your letter, even half-captured, can win</li>
+                    <li>- You can take a half-captured spot away from the opponent, as long as the opponent did not just pick that spot</li>
+                    <li>- X always moves first</li>
+                </ul>
+                <hr/>
+                <h2>Video</h2>
+                <h2>How to Play:</h2>
+                <video width="50%" controls muted>
+                    <source src="video.mp4" type="video/mp4">
+                    There was an issue loading the video
+                </video>
+            </div>
+            <hr/>
+            <div>
+                <h2>Pick Your Letter:</h2>
+                <button id="chooseX" class="chooseButton">X</button>
+                <button id="chooseO" class="chooseButton">O</button>
+            </div>
+        </div>
+        <div id="boardDiv" class="center-column">
+                <table>
+                    <tr>
+                        <td><button id="TL" type="button" class="gridButton"></button></td>
+                        <td><button id="TM" type="button" class="gridButton"></button></td>
+                        <td><button id="TR" type="button" class="gridButton"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="ML" type="button" class="gridButton"></button></td>
+                        <td><button id="MM" type="button" class="gridButton"></button></td>
+                        <td><button id="MR" type="button" class="gridButton"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="BL" type="button" class="gridButton"></button></td>
+                        <td><button id="BM" type="button" class="gridButton"></button></td>
+                        <td><button id="BR" type="button" class="gridButton"></button></td>
+                    </tr>
+                </table>            
+        </div>
+        <div id="endDiv" class="center-column">
+            <h3 id="winMessage"></h3>
+            <button id="resetButton">Reset and Play Again</button>
+        </div>
+    </body>
+</html>
