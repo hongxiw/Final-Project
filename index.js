@@ -25,7 +25,7 @@ function initialize() {
     document.querySelector("#resetButton").addEventListener("click", resetGame);
 }
 
-// SHow sthe front page and hides the others
+// Shows the front page and hides the others
 function showPickScreen() {
     pickDiv.style.display = "block";
     boardDiv.style.display = "none";
